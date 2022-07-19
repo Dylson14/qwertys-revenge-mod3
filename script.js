@@ -63,7 +63,7 @@ const promptFunc = () => {
 
   console.log("*-------------------------------------------*");
   
-  // console.log("This is the final arr: " + JSON.stringify({combineArr})); 
+  // this code merges the many arrays within the combineArr into one single array.
   var finalArr = [].concat.apply([], combineArr);
   console.log(finalArr);
 
@@ -81,7 +81,6 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  console.log("Ah shizzle here we go again: " + JSON.stringify({password}));
 
   passwordText.value = password;
 }
