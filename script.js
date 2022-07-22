@@ -9,19 +9,36 @@ var generateBtn = document.querySelector("#generate");
   
   const combineArr = [];
 
-  const numArr = [0, 1, 2, 3];
+  const numArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  const upperArr = ["A", "B", "C", "D"];
+  const upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
-  const lowerArr = ["a", "b", "c", "d"];
+  const lowerArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-  const specialCharArr = ["%", "@", "$", "&"];
+  const specialCharArr = ["%", "@", "$", "&", "/", "!", "?", "*"];
 
-// const shuffleArrFunc = (finalArr) => {
-//   return finalArr;
-// }
-
+const shuffleArrFunc = (finalArr, numChar) => {
+  console.log("this is the array before it gets shuffled", finalArr);
+  var password = "";
+    for (var i = 0; i <= numChar; i++){
+      var randomIndex = Math.floor(Math.random() * finalArr.length); //this will return a number remember
+      console.log("random index follows here: ", randomIndex);
+      password += finalArr[randomIndex]
+      console.log("this is the password", password);
+    }
+    return password;
+  }
+  
 const promptFunc = () => {
+  let numChar = prompt("How many characters should your password contain between 8-128 characters?")
+  console.log("this is numChar: ", numChar);
+
+  if(numChar < 8 || numChar > 128){
+    alert("character input is not between 8-128 characters, try again");
+    numChar = 0;
+    generatePassword();
+    return ;
+  }
 
   let lowerCase = confirm("Should your password have lower-case characters?");
   if (lowerCase) {
@@ -67,14 +84,13 @@ const promptFunc = () => {
   var finalArr = [].concat.apply([], combineArr);
   console.log(finalArr);
 
-  return finalArr
-
+  return shuffleArrFunc(finalArr, numChar)
 };
 
 function generatePassword() {
-  promptFunc();
-  // shuffleArrFunc(finalArr);
- 
+
+  return promptFunc();
+  
 }
 
 // Write password to the #password input
