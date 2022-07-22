@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 // window.onload = function () {
 //   alert(
@@ -19,6 +20,8 @@ var generateBtn = document.querySelector("#generate");
 
 const shuffleArrFunc = (finalArr, numChar) => {
   console.log("this is the array before it gets shuffled", finalArr);
+  console.log("this is the numChar before it gets shuffled", numChar);
+
   var password = "";
     for (var i = 0; i <= numChar; i++){
       var randomIndex = Math.floor(Math.random() * finalArr.length); //this will return a number remember
@@ -26,7 +29,7 @@ const shuffleArrFunc = (finalArr, numChar) => {
       password += finalArr[randomIndex]
       console.log("this is the password", password);
     }
-    return password;
+    return passwordText.value = password;
   }
   
 const promptFunc = () => {
@@ -95,10 +98,11 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  // passwordText.value = password;
+  generatePassword();
 }
 
 // Add event listener to generate button
